@@ -7,13 +7,20 @@ namespace DevStore.Infra.DataContexts
 {
     public class DevStoreDataContext : DbContext
     {
+#if DEBUG
+        static string conexao = "DevStoreConnectionStringLocal";
+#else
+        static string conexao = "DevStoreConnectionStringAzure";        
+#endif    
+
         public DevStoreDataContext()
-            : base("DevStoreConnectionString")
-            {
-                Database.SetInitializer<DevStoreDataContext>(new DevStoreDataContextInitializer());
+            : base(conexao)
+        {
+            Database.SetInitializer<DevStoreDataContext>(new DevStoreDataContextInitializer());
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
-            }
+        }
+
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -24,7 +31,7 @@ namespace DevStore.Infra.DataContexts
         }
     }
 
-    public class DevStoreDataContextInitializer : DropCreateDatabaseAlways<DevStoreDataContext>
+    public class DevStoreDataContextInitializer : DropCreateDatabaseIfModelChanges<DevStoreDataContext>
     {
         protected override void Seed(DevStoreDataContext context)
         {
