@@ -20,3 +20,6 @@ Treinamento: APIs com WebAPI - Parte 8 - https://www.youtube.com/watch?v=k4aw9Z-
 Treinamento: APIs com WebAPI - Parte 9 - https://www.youtube.com/watch?v=MwiVodEri-c
 
 Treinamento: APIs com WebAPI - Parte 10 - https://www.youtube.com/watch?v=AjivKR5nM38
+
+----------------------------------------------------------- TESTES -----------------------------------------------------------
+
